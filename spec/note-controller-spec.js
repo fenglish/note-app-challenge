@@ -28,3 +28,16 @@ function testUpdateHTML() {
   assert.isTrue(app.innerHTML === "<ul><li><a href=\"#0\">Favourite drink: ma</a></li></ul>")
 }
 testUpdateHTML();
+
+(function showNoteforCurrentPage(){
+  var controller = new NoteController(noteList);
+  controller.addNoteListView();
+  var app = document.createElement("div");
+  app.id = "app";
+  document.body.appendChild(app);
+  controller.updateHTML("app");
+  if(!(window.location.href.includes("#0"))){
+    window.location.href += "#0"
+  }
+  assert.isTrue(app.innerHTML === "<div>Favourite drink: margarita</div>");
+})();
