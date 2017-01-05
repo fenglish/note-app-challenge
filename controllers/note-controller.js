@@ -7,23 +7,24 @@
     },
 
     makeUrlChangeIdForCurrentPage: function() {
-      window.addEventListener("hashchange", this.showAnimalForCurrentPage.bind(this));
+      window.addEventListener("hashchange", this.showNoteForCurrentPage.bind(this));
     },
 
-    showAnimalForCurrentPage: function () {
-      this.showNote(this.getNoteFromUrl(window.location));
+    showNoteForCurrentPage: function () {
+      this.showNote(this.getSingleNoteViewFromUrl(window.location));
     },
 
-    getNoteFromUrl: function (location) {
+    getSingleNoteViewFromUrl: function (location) {
       var noteId = location.hash.split("/")[1];
       var note = this.list.list[noteId];
-      return note
+      var singleNoteView = new SingleNoteView(note);
+      return singleNoteView
     },
 
-    showNote: function (note) {
+    showNote: function (singleNoteView) {
         document
           .getElementById("note")
-          .innerHTML = new SingleNoteView(note).viewHtml();
+          .innerHTML = singleNoteView.viewHtml();
     }
   };
 })(this);

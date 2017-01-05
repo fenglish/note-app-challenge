@@ -19,6 +19,39 @@ function testNoteControllerShowList(){
   }
 }
 
+function testShowNote(){
+  function SingleNoteViewDouble(){
+    this.callCount = 0;
+  };
+
+  SingleNoteViewDouble.prototype = {
+    viewHtml: function(){
+      this.callCount += 1;
+      return "method was called";
+    }
+  };
+
+  var myDouble = new SingleNoteViewDouble();
+  NoteController.showNote(myDouble);
+  if(myDouble.callCount !== 1) {
+    throw new Error("Method was not called");
+  };
+};
+
+function testIsSingleNoteView(){
+  function LocationDouble(){
+    this.hash = "#notes/0";
+  };
+  NoteController.createList();
+  NoteController.list.add("test");
+  var location = new LocationDouble();
+  if(!(NoteController.getSingleNoteViewFromUrl(location) instanceof SingleNoteView)) {
+    throw new Error("Not correct class");
+  };
+};
+
+testIsSingleNoteView();
+testShowNote();
 testNoteControllerExsist();
 testNoteControllerHasShowList();
 testNoteControllerShowList();
