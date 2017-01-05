@@ -11,7 +11,12 @@
 </head>
 
 <body>
-    <div id ="app">Hello</div>
+  <form id="create-note">
+    <textarea id="text" rows="4" cols="50">
+    </textarea>
+    <input id="submit-button" type="button" value="Create Note">
+  </form>
+    <div id ="app"></div>
     <div id ="note"></div>
     <script src="controllers/note-controller.js"></script>
     <script src="spec/noteControllerSpec.js"></script>

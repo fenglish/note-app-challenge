@@ -27,16 +27,22 @@
           .innerHTML = singleNoteView.viewHtml();
     },
 
-    getTextFromForm: function (){
-      document
-        .getElementById("create-note")
-        .addEventListener("submit", function(clickEvent){
+    eventWhenSubmitForm: function (){
+      console.log(this);
+      var form = document.getElementById("create-note");
+      console.log(form);
+      form.addEventListener("submit", function(clickEvent){
           clickEvent.preventDefault();
           var text = document.getElementById("text").value
-          console.log(text)
+          NoteController.list.add(text);
+          var listView = new ListView();
+          var listHtml = listView.changeToHtml(NoteController.list);
+          NoteController.showList(listHtml);
         })
-    }
+    },
 
+    getTextFromForm: function(){
 
+    },
   };
 })(this);
