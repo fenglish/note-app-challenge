@@ -25,6 +25,18 @@
         document
           .getElementById("note")
           .innerHTML = singleNoteView.viewHtml();
+    },
+
+    getTextFromForm: function (){
+      document
+        .getElementById("create-note")
+        .addEventListener("submit", function(clickEvent){
+          clickEvent.preventDefault();
+          var text = document.getElementById("text").value
+          console.log(text)
+        })
     }
+
+
   };
 })(this);
