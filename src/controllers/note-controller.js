@@ -21,17 +21,15 @@
     noteDisplay.innerHTML = getListNotes;
   };
 
-
-
   NoteController.prototype.showSingleNoteOnUrlChange = function(){
-    window.addEventListener("hashchange", this.showNoteforCurrentPage);
-  };
-
-  NoteController.prototype.showNoteforCurrentPage = function(){
-    var note = this.noteController._noteList.showNotes()[0];
-    var singleNoteView = new SingleNoteView(note);
-    var noteDisplay = document.getElementById("app");
-    noteDisplay.innerHTML = singleNoteView.viewNote();
+    var self = this;
+    window.addEventListener("hashchange", function(){
+      var id = window.location.href.split("#")[1]
+      var note = self._noteList.showNotes()[String(id)];
+      var singleNoteView = new SingleNoteView(note);
+      var noteDisplay = document.getElementById("app");
+      noteDisplay.innerHTML = singleNoteView.viewNote();
+    });
   };
 
   exports.NoteController = NoteController;

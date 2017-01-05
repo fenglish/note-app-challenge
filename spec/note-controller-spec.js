@@ -32,9 +32,7 @@ testUpdateHTML();
 (function showNoteforCurrentPage(){
   var controller = new NoteController(noteList);
   controller.addNoteListView();
-  var app = document.createElement("div");
-  app.id = "app";
-  document.body.appendChild(app);
+  controller.showSingleNoteOnUrlChange();
   controller.updateHTML("app");
   if(!(window.location.href.includes("#0"))){
     window.location.href += "#0"
