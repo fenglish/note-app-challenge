@@ -32,6 +32,15 @@
     });
   };
 
+  NoteController.prototype.preventSubmit = function(submit){
+    var self = this;
+    var form = document.getElementById(submit)
+    form.addEventListener('click', function(event) {
+      console.log(event)
+      event.preventDefault();
+    });
+  };
+
   exports.NoteController = NoteController;
 
 })(this);
