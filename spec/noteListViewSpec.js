@@ -24,4 +24,16 @@ function UnorderedListofNotesCreatedTwoNotes(){
   }
 };
 
+function testListViewShowOnlyFirst20chars(){
+  list = new List();
+  listView = new ListView();
+
+  list.add("01234568790123456879blahblah");
+  if(listView.changeToHtml(list) !== "<ul><li><div>01234568790123456879</div></li></ul>") {
+    throw new Error("Bad list view");
+  }
+
+}
+
 UnorderedListofNotesCreatedTwoNotes();
+testListViewShowOnlyFirst20chars();
