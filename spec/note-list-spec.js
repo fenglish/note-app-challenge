@@ -23,3 +23,10 @@ function testCreateNote() {
   assert.isTrue(noteList.showNotes()[0].returnNoteText() === "it's dark outside");
 };
 testCreateNote();
+
+(function testCreateNoteWithId(){
+  var noteList = new NoteList;
+  noteList.createNote("test1");
+  noteList.createNote("test2");
+  assert.isTrue(noteList.showNotes()[1].returnId() === 1);
+})();

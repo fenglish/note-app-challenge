@@ -2,6 +2,7 @@
 
   function NoteList(){
     this._notes = [];
+    this._count = 0
   }
 
   NoteList.prototype.addNote = function(note){
@@ -13,7 +14,8 @@
   };
 
   NoteList.prototype.createNote = function(string){
-    var note = new Note(string);
+    var note = new Note(string, this._count);
+    this._count += 1
     this.addNote(note);
   };
 
