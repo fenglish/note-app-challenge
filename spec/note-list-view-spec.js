@@ -2,15 +2,24 @@ note = {};
 note.returnNoteText = function(){
   return "A doubled note";
 };
+note.returnId = function(){
+  return 0;
+};
 
 note2 = {};
 note2.returnNoteText = function(){
   return "A secondouble note";
 };
+note2.returnId = function(){
+  return 1;
+};
 
 long_note = {};
 long_note.returnNoteText = function(){
   return "Is this overreaching arm, or is it compassion? Is this handout undeserved or just reparation?";
+};
+long_note.returnId = function(){
+  return 0;
 };
 
 noteList = {};
@@ -41,13 +50,13 @@ testInstantiatesWithNoteList();
 
 function testListNotes(){
   var noteListView = new NoteListView(noteList);
-  assert.isTrue(noteListView.listNotes() === "<ul><li><div>A doubled note</div></li></ul>");
+  assert.isTrue(noteListView.listNotes() === "<ul><li><a href=\"#0\">A doubled note</a></li></ul>");
 };
 testListNotes();
 
 function testMultipleListNotes(){
   var noteListView = new NoteListView(noteList2);
-  assert.isTrue(noteListView.listNotes() === "<ul><li><div>A doubled note</div></li><li><div>A secondouble note</div></li></ul>");
+  assert.isTrue(noteListView.listNotes() === "<ul><li><a href=\"#0\">A doubled note</a></li><li><a href=\"#1\">A secondouble note</a></li></ul>");
 };
 testMultipleListNotes();
 
@@ -57,7 +66,12 @@ function testEmptyListNotes(){
 };
 testMultipleListNotes();
 
-function testShowingOnlyFirstCharacters(){
+(function testShowingOnlyFirstCharacters(){
   var noteListView = new NoteListView(noteList_4);
-  assert.isTrue(noteListView.listNotes() === "<ul><li><div>Is this overreachin</div></li></ul>")
-}
+  assert.isTrue(noteListView.listNotes() === "<ul><li><a href=\"#0\">Is this overreachin</a></li></ul>")
+})();
+
+(function testShowingHashId(){
+  var noteListView = new NoteListView(noteList_4);
+  assert.isTrue(noteListView.listNotes() === "<ul><li><a href=\"#0\">Is this overreachin</a></li></ul>")
+})();
