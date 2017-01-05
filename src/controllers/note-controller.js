@@ -21,13 +21,13 @@
     noteDisplay.innerHTML = getListNotes;
   };
 
-  NoteController.prototype.showSingleNoteOnUrlChange = function(){
+  NoteController.prototype.showSingleNoteOnUrlChange = function(app){
     var self = this;
     window.addEventListener("hashchange", function(){
       var id = window.location.href.split("#")[1]
-      var note = self._noteList.showNotes()[String(id)];
+      var note = self._noteList.findNote(parseInt(id));
       var singleNoteView = new SingleNoteView(note);
-      var noteDisplay = document.getElementById("app");
+      var noteDisplay = document.getElementById(app);
       noteDisplay.innerHTML = singleNoteView.viewNote();
     });
   };

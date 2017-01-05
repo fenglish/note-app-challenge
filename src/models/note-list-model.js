@@ -19,6 +19,16 @@
     this.addNote(note);
   };
 
+  NoteList.prototype.findNote = function(id){
+    var note
+    this.showNotes().forEach(function(element){
+      if(element.returnId() === id){
+        note = element
+      }
+    });
+    return note
+  };
+
   exports.NoteList = NoteList;
 
 })(this);
