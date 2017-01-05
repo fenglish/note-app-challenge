@@ -11,4 +11,14 @@ function testNoteIsCreated() {
   }
 };
 
+function testNoteHasId(){
+  note = new Note("Hello");
+  note2 = new Note("Hello");
+
+  if (note.id !== note2.id - 1) {
+    throw new Error("Incorrect Id")
+  };
+}
+
 testNoteIsCreated();
+testNoteHasId();

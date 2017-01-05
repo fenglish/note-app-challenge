@@ -1,5 +1,7 @@
-var list = new List();
 var listView = new ListView();
-list.add("Favourite drink: seltzer");
-var listHtml = listView.changeToHtml(list);
+NoteController.createList();
+NoteController.list.add("Favourite drink: seltzer");
+NoteController.list.add("Favourite food: Banana");
+var listHtml = listView.changeToHtml(NoteController.list);
 NoteController.showList(listHtml);
+NoteController.makeUrlChangeIdForCurrentPage();

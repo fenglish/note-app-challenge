@@ -7,7 +7,7 @@
 
   ListView.prototype.changeToHtml = function(list){
     var listArray = list.view().map(function(note){
-      return "<li><div>" + note.text.slice(0,20) + "</div></li>";
+      return "<li><a href=\"#notes/" + note.id + "\"><div>" + note.text.slice(0,20) + "</div></a></li>";
     });
     return "<ul>" + listArray.join('') + "</ul>";
   };
