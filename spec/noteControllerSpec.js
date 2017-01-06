@@ -50,6 +50,29 @@ function testIsSingleNoteView(){
   };
 };
 
+function whenAppLoadedWithEmptyList(){
+  var text = document.getElementById("app").innerHTML;
+  console.log(text);
+  if(text !== ""){
+    throw new Error("List is not empty");
+  };
+}
+
+function whenSubmitButtonClicked(){
+  var textarea = document.getElementById("text")
+  console.log(textarea);
+  textarea.value = "test"
+  console.log(textarea.value);
+  var button = document.getElementById("submit-button")
+  button.click();
+  if(document.getElementById("app").innerHTML !== "test"){
+    throw new Error("Text not updated");
+  };
+
+}
+
+whenSubmitButtonClicked();
+whenAppLoadedWithEmptyList();
 testIsSingleNoteView();
 testShowNote();
 testNoteControllerExsist();
