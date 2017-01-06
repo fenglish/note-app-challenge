@@ -28,9 +28,7 @@
     },
 
     eventWhenSubmitForm: function (){
-      console.log(this);
       var form = document.getElementById("create-note");
-      console.log(form);
       form.addEventListener("submit", function(clickEvent){
           clickEvent.preventDefault();
           var text = document.getElementById("text").value
