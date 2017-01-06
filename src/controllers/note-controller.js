@@ -36,8 +36,9 @@
     var self = this;
     var form = document.getElementById(submit)
     form.addEventListener('click', function(event) {
-      console.log(event)
       event.preventDefault();
+      var textarea = document.getElementById("textarea")
+      if( textarea !== null ){ console.log(textarea.value) }
     });
   };
 
