@@ -1,16 +1,14 @@
+// doubles
 note = {};
-note.returnNoteText = function(){
-  return "A doubled note";
-};
+note.returnNoteText = function(){ return "A doubled note"; };
 
-function testInstantiateWithNote(){
+// tests
+(function testInstantiateWithNote(){
 	var singleNoteView = new SingleNoteView(note);
-	assert.isTrue(singleNoteView._note === note);
-};
-testInstantiateWithNote();
+	assert.isTrue(singleNoteView._note === note, testInstantiateWithNote.name);
+})();
 
-function testViewingSingleNote(){
+(function testViewingSingleNote(){
 	var singleNoteView = new SingleNoteView(note);
-	assert.isTrue(singleNoteView.viewNote() === "<div>A doubled note</div>")
-};
-testViewingSingleNote();
+	assert.isTrue(singleNoteView.viewNote() === "<div>A doubled note</div>", testViewingSingleNote.name)
+})();

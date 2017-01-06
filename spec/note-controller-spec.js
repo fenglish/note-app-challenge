@@ -1,20 +1,18 @@
 noteList = new NoteList();
 noteList.createNote("Favourite drink: margarita");
 
-function testInstantiateNoteController() {
+(function testInstantiateNoteController() {
   var controller = new NoteController(noteList);
   assert.isTrue(typeof controller === "object", testInstantiateNoteController.name)
-};
-testInstantiateNoteController();
+})();
 
-function testUpdateHTML() {
+(function testUpdateHTML() {
   var controller = new NoteController(noteList);
 
   controller.addNoteListView();
   controller.updateHTML("app");
   assert.isTrue(app.innerHTML === "<ul><li><a href=\"#0\">Favourite drink: ma</a></li></ul>", testUpdateHTML.name)
-}
-testUpdateHTML();
+})();
 
 (function showNoteforCurrentPage(){
   var controller = new NoteController(noteList);
