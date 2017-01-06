@@ -3,7 +3,7 @@ noteList.createNote("Favourite drink: margarita");
 
 function testInstantiateNoteController() {
   var controller = new NoteController(noteList);
-  assert.isTrue(typeof controller === "object")
+  assert.isTrue(typeof controller === "object", testInstantiateNoteController.name)
 };
 testInstantiateNoteController();
 
@@ -12,7 +12,7 @@ function testUpdateHTML() {
 
   controller.addNoteListView();
   controller.updateHTML("app");
-  assert.isTrue(app.innerHTML === "<ul><li><a href=\"#0\">Favourite drink: ma</a></li></ul>")
+  assert.isTrue(app.innerHTML === "<ul><li><a href=\"#0\">Favourite drink: ma</a></li></ul>", testUpdateHTML.name)
 }
 testUpdateHTML();
 
@@ -25,7 +25,7 @@ testUpdateHTML();
     window.location.href += "#0"
   }
   window.addEventListener("hashchange", function() {
-      assert.isTrue(app.innerHTML === "<div>Favourite drink: margarita</div>");
+      assert.isTrue(app.innerHTML === "<div>Favourite drink: margarita</div>", showNoteforCurrentPage.name);
   });
 })();
 
@@ -39,5 +39,5 @@ testUpdateHTML();
   controller._noteList.createNote(text);
   controller.updateHTML("app")
   document.getElementById("text").reset();
-  assert.isTrue(app.innerHTML.includes("Favourite food: ban"));
+  assert.isTrue(app.innerHTML.includes("Favourite food: ban"), testNoteCreation.name);
 })();
