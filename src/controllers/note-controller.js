@@ -34,11 +34,13 @@
 
   NoteController.prototype.preventSubmit = function(submit){
     var self = this;
-    var form = document.getElementById(submit)
-    form.addEventListener('click', function(event) {
+    var button = document.getElementById("submitbutton")
+    button.addEventListener('click', function(event) {
       event.preventDefault();
-      var textarea = document.getElementById("textarea")
-      if( textarea !== null ){ console.log(textarea.value) }
+      var text = document.getElementById("textarea").value
+      self._noteList.createNote(text);
+      self.updateHTML("app")
+      document.getElementById("text").reset();
     });
   };
 

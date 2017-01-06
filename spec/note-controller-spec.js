@@ -11,9 +11,6 @@ function testUpdateHTML() {
   var controller = new NoteController(noteList);
 
   controller.addNoteListView();
-  var app = document.createElement("div");
-  app.id = "app";
-  document.body.appendChild(app);
   controller.updateHTML("app");
   assert.isTrue(app.innerHTML === "<ul><li><a href=\"#0\">Favourite drink: ma</a></li></ul>")
 }
@@ -30,4 +27,17 @@ testUpdateHTML();
   window.addEventListener("hashchange", function() {
       assert.isTrue(app.innerHTML === "<div>Favourite drink: margarita</div>");
   });
+})();
+
+(function testNoteCreation(){
+  var controller = new NoteController(noteList);
+  controller.addNoteListView(noteList);
+  controller.updateHTML("app");
+  var textarea = document.getElementById("textarea")
+  textarea.value = "Favourite food: banana"
+  var text = document.getElementById("textarea").value
+  controller._noteList.createNote(text);
+  controller.updateHTML("app")
+  document.getElementById("text").reset();
+  assert.isTrue(app.innerHTML.includes("Favourite food: ban"));
 })();
